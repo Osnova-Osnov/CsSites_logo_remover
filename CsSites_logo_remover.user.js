@@ -1,12 +1,12 @@
 // ==UserScript==
-// @name         Runcase Logo Replacer
+// @name         Убрать логотип из кс-сайтов
 // @namespace    http://tampermonkey.net/
 // @version      1.0
-// @description  Replace Runcase logo with custom one
+// @description  Убирает логотип из кс-сайтов
 // @match        https://runcase.gg/*
 // @icon         https://runcase.gg/img/runcase-logo.svg
-// @updateURL    https://raw.githubusercontent.com/Osnova-Osnov/your-repo/main/runcase-logo.user.js
-// @downloadURL  https://raw.githubusercontent.com/Osnova-Osnov/your-repo/main/runcase-logo.user.js
+// @updateURL    https://raw.githubusercontent.com/Osnova-Osnov/CsSites_logo_remover/main/CsSites_logo_remover.user.js
+// @downloadURL  https://raw.githubusercontent.com/Osnova-Osnov/CsSites_logo_remover/main/CsSites_logo_remover.user.js
 // @grant        none
 // ==/UserScript==
 
