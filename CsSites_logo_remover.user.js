@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Убрать логотип из кс-сайтов
+// @name         CsSites_logo_remover
 // @namespace    http://tampermonkey.net/
 // @version      1.0
-// @description  Убирает логотип из кс-сайтов
+// @description  CsSites_logo_remover
 // @match        https://runcase.gg/*
 // @icon         https://runcase.gg/img/runcase-logo.svg
 // @updateURL    https://raw.githubusercontent.com/Osnova-Osnov/CsSites_logo_remover/main/CsSites_logo_remover.user.js
