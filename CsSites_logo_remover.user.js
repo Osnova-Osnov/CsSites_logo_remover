@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         CsSites_logo_remover
 // @namespace    http://tampermonkey.net/
-// @version      1.0
-// @description  CsSites_logo_remover
+// @version      1.1
+// @description  Replace runcase.gg and runcase.net logos
 // @match        https://runcase.gg/*
+// @match        https://runcase.net/*
 // @icon         https://runcase.gg/img/runcase-logo.svg
 // @updateURL    https://raw.githubusercontent.com/Osnova-Osnov/CsSites_logo_remover/main/CsSites_logo_remover.user.js
 // @downloadURL  https://raw.githubusercontent.com/Osnova-Osnov/CsSites_logo_remover/main/CsSites_logo_remover.user.js
@@ -15,25 +16,33 @@
 
     const newLogo = "https://raw.githubusercontent.com/Osnova-Osnov/CsSites_logo_remover/refs/heads/main/runcase-logo.svg";
 
-    function replaceLogo() {
-        // Ищем все изображения с оригинальным логотипом
-        const imgs = document.querySelectorAll('img[src*="runcase-logo.svg"]');
+    // Логотипы, которые нужно заменить
+    const originalLogos = [
+        "runcase-logo.svg",                 // общий случай
+        "https://runcase.gg/img/runcase-logo.svg",
+        "https://runcase.net/img/runcase-logo.svg"
+    ];
 
+    function replaceLogo() {
+        // Меняем <img>
+        const imgs = document.querySelectorAll("img");
         imgs.forEach(img => {
-            img.src = newLogo;
+            if (originalLogos.some(url => img.src.includes(url))) {
+                img.src = newLogo;
+            }
         });
 
-        // Иногда логотип вставлен как background-image
+        // Меняем background-image
         const elements = document.querySelectorAll('*');
         elements.forEach(el => {
             const bg = getComputedStyle(el).backgroundImage;
-            if (bg.includes("runcase-logo.svg")) {
+            if (originalLogos.some(url => bg.includes(url))) {
                 el.style.backgroundImage = `url("${newLogo}")`;
             }
         });
     }
 
-    // Запускаем сразу и при изменениях DOM
+    // Запуск сразу и при изменениях DOM
     replaceLogo();
     const observer = new MutationObserver(replaceLogo);
     observer.observe(document.body, { childList: true, subtree: true });
